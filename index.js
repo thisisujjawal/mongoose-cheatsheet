@@ -85,7 +85,8 @@ app.get('/' , async(req, res)=>{
     const users = await UserModel.findById(id);
     console.log(users);
     res.status(200).json(users);
-    // If the id is correct then there is no issue but if the id is wrong then it will throw an error. 
+    // If id is correct it will return the user and if the id is incorrect then it will return null but
+    //if the id is invalid(maybe length is wrong or type is wrong) then it will throw an error.
     // To overcome this we use below methord
     if(mongoose.Types.ObjectId.isValid(id)){
         const users = await UserModel.findById(id);
